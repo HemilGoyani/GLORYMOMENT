@@ -127,7 +127,6 @@ dmypy.json
 # Pyre type checker
 .pyre/
 data/
-media/
 .DS_Store
 
 
@@ -138,4 +137,3 @@ media/
 !**/migrations/__init__.py
 
 env
-static
