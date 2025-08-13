@@ -33,7 +33,7 @@ SECRET_KEY = os.getenv("SECRET_KEY", "sdefhjsdgfdhgfddf5454hfg@2434456fghgvhh")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = bool(strtobool(os.getenv("DEBUG", "True")))
 
-ALLOWED_HOSTS = ["glorymoment.onrender.com", "localhost", "127.0.0.1"]
+ALLOWED_HOSTS = ["glorymoment.onrender.com"]
 
 # Application definition
 INSTALLED_APPS = [
