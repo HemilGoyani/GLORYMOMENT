@@ -33,7 +33,7 @@ SECRET_KEY = os.getenv("SECRET_KEY", "sdefhjsdgfdhgfddf5454hfg@2434456fghgvhh")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = bool(strtobool(os.getenv("DEBUG", "True")))
 
-ALLOWED_HOSTS = ["*"]  # os.getenv("ALLOWED_HOSTS", "*").split(",")
+ALLOWED_HOSTS = ["https://glorymoment.onrender.com"]  # os.getenv("ALLOWED_HOSTS", "*").split(",")
 
 # Application definition
 INSTALLED_APPS = [
@@ -167,6 +167,10 @@ PAGE_LIMIT = 10
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:8000",
     "http://127.0.0.1:8000",
+    'https://glorymoment.onrender.com'
+]
+CSRF_TRUSTED_ORIGINS = [
+    'https://glorymoment.onrender.com',
 ]
 FRONTEND_DOMAIN = os.getenv("FRONTEND_DOMAIN")
 CORS_ALLOW_ALL_ORIGINS = True
