@@ -1,0 +1,147 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Glory Moment</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: url("{% static 'images/background.png' %}") no-repeat center center fixed;
+      background-size: cover;
+      margin: 0;
+      padding: 20px;
+      color: #f2f2f2;
+      text-align: center;
+    }
+
+    .logo {
+      width: 100px;
+      height: 100px;
+      margin: 20px auto;
+      border-radius: 50%;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+    }
+
+    h1 {
+      margin: 10px 0 5px;
+    }
+
+    .subtitle {
+      font-size: 0.9rem;
+      color: #ccc;
+      margin-bottom: 20px;
+    }
+
+    .tabs {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .tab {
+      padding: 10px 20px;
+      border-radius: 20px;
+      background: #444;
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .tab.active {
+      background: #fff;
+      color: #000;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .product-card {
+      background: white;
+      color: black;
+      border-radius: 15px;
+      overflow: hidden;
+      padding: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .product-name {
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    .footer-text {
+      margin-top: 30px;
+      font-size: 1rem;
+      color: white;
+    }
+
+    .footer-text span {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Logo -->
+  <div class="logo">
+    <img src="{% static 'images/logo.png' %}" alt="Logo">
+  </div>
+
+  <!-- Title and Subtitle -->
+  <h1>The Glory Moment</h1>
+  <div class="subtitle">
+    🚗 Car Stories | 🏆 Collector's Showpieces<br>
+    🎥 Viral Reels - ❤️ Buy your dream car decor here
+  </div>
+
+  <!-- Tabs -->
+  <div class="tabs">
+    {% for cat in categories %}
+      <div class="tab {% if cat == selected_category %}active{% endif %}">
+        <a href="/?category={{ cat }}" style="text-decoration: none; color: inherit;">{{ cat }}</a>
+      </div>
+    {% endfor %}
+  </div>
+
+  <!-- Products -->
+  <div class="product-grid">
+    {% for product in products %}
+      <div class="product-card" onclick="window.open('{{ product.url }}', '_blank')">
+        <img src="/media/{{product.image}}" alt="{{ product.name }}">
+        <div class="product-name">{{ product.name }} 🔥</div>
+      </div>
+    {% endfor %}
+  </div>
+
+  <!-- Footer -->
+  <div class="footer-text">
+    DM Me If You Need Any Specify Car or Items <span>❤️</span><br />
+    <strong>Thank You For Visit <span>❤️</span></strong>
+  </div>
+
+</body>
+</html>
