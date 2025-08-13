@@ -31,7 +31,7 @@ load_dotenv(ENV_PATH)  # Explicitly load .env
 SECRET_KEY = os.getenv("SECRET_KEY", "sdefhjsdgfdhgfddf5454hfg@2434456fghgvhh")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = bool(strtobool(os.getenv("DEBUG", "True")))
+DEBUG = bool(strtobool(os.getenv("DEBUG", "False")))
 
 ALLOWED_HOSTS = ["glorymoment.onrender.com"]  # os.getenv("ALLOWED_HOSTS", "*").split(",")
 
@@ -158,9 +158,10 @@ REST_FRAMEWORK = {
     ]
 }
 
-MAX_FILE_SIZE = 1
+# Add your deployed domain to trusted origins for CSRF protection
+CSRF_TRUSTED_ORIGINS = [
+    'https://glorymoment.onrender.com',
+]
 
-PAGE_LIMIT = 10
-
-FRONTEND_DOMAIN = os.getenv("FRONTEND_DOMAIN")
-CORS_ALLOW_ALL_ORIGINS = True
+# Optional: If using a proxy (like Render uses), this helps ensure correct host headers
+USE_X_FORWARDED_HOST = True
