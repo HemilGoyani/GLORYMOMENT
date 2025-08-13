@@ -38,7 +38,6 @@ ALLOWED_HOSTS = ["https://glorymoment.onrender.com"]  # os.getenv("ALLOWED_HOSTS
 # Application definition
 INSTALLED_APPS = [
     "rest_framework",
-    "corsheaders",
     "drf_yasg",
     "rest_framework_swagger",
     "rest_framework_simplejwt",
@@ -61,7 +60,6 @@ MIDDLEWARE = [
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
-    "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
 ROOT_URLCONF = "backend.urls"
@@ -164,13 +162,5 @@ MAX_FILE_SIZE = 1
 
 PAGE_LIMIT = 10
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:8000",
-    "http://127.0.0.1:8000",
-    'https://glorymoment.onrender.com'
-]
-CSRF_TRUSTED_ORIGINS = [
-    'https://glorymoment.onrender.com',
-]
 FRONTEND_DOMAIN = os.getenv("FRONTEND_DOMAIN")
 CORS_ALLOW_ALL_ORIGINS = True
