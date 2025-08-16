@@ -34,14 +34,15 @@ SECRET_KEY = os.getenv("SECRET_KEY", "sdefhjsdgfdhgfddf5454hfg@2434456fghgvhh")
 DEBUG = bool(strtobool(os.getenv("DEBUG", "True")))
 
 ALLOWED_HOSTS = ["glorymoment.onrender.com"]  # os.getenv("ALLOWED_HOSTS", "*").split(",")
+# ALLOWED_HOSTS = ["*"]  # os.getenv("ALLOWED_HOSTS", "*").split(",")
 
 # Application definition
 INSTALLED_APPS = [
+    "corsheaders",
     "rest_framework",
     "drf_yasg",
     "rest_framework_swagger",
     "rest_framework_simplejwt",
-    "django_admin_listfilter_dropdown",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -53,13 +54,14 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    "corsheaders.middleware.CorsMiddleware",
-    "django.middleware.security.SecurityMiddleware",
-    "django.contrib.sessions.middleware.SessionMiddleware",
-    "django.middleware.common.CommonMiddleware",
-    "django.middleware.csrf.CsrfViewMiddleware",
-    "django.contrib.auth.middleware.AuthenticationMiddleware",
-    "django.contrib.messages.middleware.MessageMiddleware",
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.security.SecurityMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
 ROOT_URLCONF = "backend.urls"
@@ -161,7 +163,25 @@ REST_FRAMEWORK = {
 # Add your deployed domain to trusted origins for CSRF protection
 CSRF_TRUSTED_ORIGINS = [
     'https://glorymoment.onrender.com',
+    'http://127.0.0.1:8000'
 ]
 
 # Optional: If using a proxy (like Render uses), this helps ensure correct host headers
 USE_X_FORWARDED_HOST = True
+
+SWAGGER_SETTINGS = {
+    "SECURITY_DEFINITIONS": {
+        "Bearer": {"type": "apiKey", "name": "Authorization", "in": "header"},
+    }
+}
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:8000",
+    "http://127.0.0.1:8000",
+    "http://192.18.103.152:3000",
+    "http://localhost:3000",
+    "https://glorymoment.onrender.com"
+]
+# FRONTEND_DOMAIN = os.getenv("FRONTEND_DOMAIN")
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ORIGIN_ALLOW_ALL = True
