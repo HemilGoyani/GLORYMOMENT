@@ -24,7 +24,7 @@ class ProductListAPIView(APIView):
         categories = dict(Product.CATEGORY_CHOICES)
 
         products = Product.objects.filter(category=category, active=True)
-        serializer = ProductSerializer(products, many=True)
+        serializer = ProductSerializer(products, many=True, context={'request': request})
 
         return Response({
             "products": serializer.data,
